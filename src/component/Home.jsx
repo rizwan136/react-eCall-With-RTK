@@ -1,3 +1,6 @@
+import { useDispatch } from "react-redux";
+import { selectProduct, removeProduct } from "../store/slice/productSlice";
+
 const products = [
   {
     id: 1,
@@ -31,6 +34,13 @@ const products = [
   }
 ];
 const Home = () => {
+  const dispatch = useDispatch();
+  const addProduct = (payload) => {
+    dispatch(selectProduct(payload));
+  };
+  const deleteProduct = (payload) => {
+    dispatch(removeProduct(payload));
+  };
   return (
     <>
       <div className="container mx-auto mt-4">
@@ -48,17 +58,20 @@ const Home = () => {
                 <hr className="my-4" />
               </div>
               <div className="flex justify-between items-center">
-                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                <button
+                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded"
+                  onClick={() => addProduct(product)}
+                >
                   Add
                 </button>
-                <button className="bg-red-300 hover:bg-red-900 text-white font-bold py-2 px-3 rounded">
-                  Remove
-                </button>
-                {/* <button className="bg-red-300 hover:bg-red-900 text-white font-bold py-2 px-3 rounded"
-                
+                <button
+                  className="bg-red-300 hover:bg-red-900 text-white font-bold py-2 px-3 rounded"
+                  onClick={() => {
+                    deleteProduct(product);
+                  }}
                 >
                   Remove
-                </button> */}
+                </button>
               </div>
             </div>
           ))}

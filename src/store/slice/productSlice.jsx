@@ -5,10 +5,11 @@ const productSlice = createSlice({
   initialState: [],
   reducers: {
     selectProduct(state, action) {
-      console.log(action);
-    }
+      state.push(action.payload);
+    },
+    removeProduct(state, action) {}
   }
 });
 
 export default productSlice.reducer;
-export const { selectProduct } = productSlice.actions;
+export const { selectProduct, removeProduct } = productSlice.actions;
