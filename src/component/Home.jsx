@@ -1,37 +1,39 @@
 import { useDispatch } from "react-redux";
 import { selectProduct, removeProduct } from "../store/slice/productSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const products = [
   {
     id: 1,
     name: "Product A",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel nunc ut justo sagittis commodo."
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel nunc ut justo sagittis commodo.",
   },
   {
     id: 2,
     name: "Product B",
     description:
-      "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+      "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
   },
   {
     id: 3,
     name: "Product C",
     description:
-      "Integer feugiat justo vitae nisl bibendum, nec malesuada libero interdum. Aliquam erat volutpat."
+      "Integer feugiat justo vitae nisl bibendum, nec malesuada libero interdum. Aliquam erat volutpat.",
   },
   {
     id: 4,
     name: "Product D",
     description:
-      "Suspendisse potenti. Nullam ullamcorper lacinia diam, vel efficitur eros rhoncus nec."
+      "Suspendisse potenti. Nullam ullamcorper lacinia diam, vel efficitur eros rhoncus nec.",
   },
   {
     id: 5,
     name: "Product E",
     description:
-      "Vivamus vestibulum dolor a est ornare, a tincidunt odio laoreet. Etiam tempus mauris id fringilla suscipit."
-  }
+      "Vivamus vestibulum dolor a est ornare, a tincidunt odio laoreet. Etiam tempus mauris id fringilla suscipit.",
+  },
 ];
 const Home = () => {
   const dispatch = useDispatch();
@@ -57,21 +59,25 @@ const Home = () => {
                 <p className="text-gray-600">{product.description}</p>
                 <hr className="my-4" />
               </div>
-              <div className="flex justify-between items-center">
-                <button
-                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded"
-                  onClick={() => addProduct(product)}
-                >
-                  Add
-                </button>
-                <button
-                  className="bg-red-300 hover:bg-red-900 text-white font-bold py-2 px-3 rounded"
-                  onClick={() => {
-                    deleteProduct(product);
-                  }}
-                >
-                  Remove
-                </button>
+              <div className="flex float-right items-center ">
+                <div className="shadow-inner shadow-slate-300 rounded-lg">
+                  <button className="">
+                    <FontAwesomeIcon
+                      icon={faMinus}
+                      className="px-4 py-2 text-slate-500 hover:text-2xl hover:font-bold"
+                      onClick={() => {
+                        deleteProduct(product);
+                      }}
+                    />
+                    <FontAwesomeIcon
+                      icon={faPlus}
+                      className="px-4 py-2 text-slate-500 hover:text-2xl hover:font-bold"
+                      onClick={() => {
+                        addProduct(product);
+                      }}
+                    />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
